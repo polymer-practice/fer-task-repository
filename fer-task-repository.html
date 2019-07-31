@@ -15,12 +15,21 @@
           limit: {
             type: Number,
             value: 5
+          },
+          newTask: {
+            type: String,
+            value: '',
+            observer: '_onTaskAdded'
           }
         };
       }
 
       static get observers() {
         return ['getPage(offset, limit)']
+      }
+
+      _onTaskAdded(currentValue, prevValue) {
+        this.taskList.unshift(this.newTask)
       }
 
       constructor() {
