@@ -20,7 +20,7 @@
             type: Object,
             observer: '_onTaskAdded'
           },
-          updateData: {
+          updateTask: {
             type: Object,
             observer: '_onUpdateTask'
           }
@@ -53,9 +53,11 @@
             composed: true
           }
         )
-        let obj = this.taskList.find(task => task.id === this.taskList.id)
-        let index = this.taskList.indexOf(obj)
-        this.taskList.fill(obj.id = index)
+        let obj = this.taskList.find(taskFromState => {
+          return task.id === taskFromState.id
+        });
+        
+         obj = Object.assign(obj, task);
           setTimeout(() => {
             this.dispatchEvent(customEvent);
           }, 300)
