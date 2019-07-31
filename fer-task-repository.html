@@ -19,6 +19,10 @@
           newTask: {
             type: Object,
             observer: '_onTaskAdded'
+          },
+          updateData: {
+            type: Object,
+            observer: '_onUpdateTask'
           }
         };
       }
@@ -39,6 +43,23 @@
         this.taskList.unshift(this.newTask);
 
         setTimeout(() => { this.dispatchEvent(customEvent); }, 300);
+      }
+
+      _onUpdateTask(task) {
+        const customEvent = new CustomEvent(
+          'updated-task',
+          {
+            bubbles: true,
+            composed: true
+          }
+        )
+        let obj = this.taskList.find(task => task.id === this.taskList.id)
+        let index = this.taskList.indexOf(obj)
+        this.taskList.fill(obj.id = index)
+          setTimeout(() => {
+            this.dispatchEvent(customEvent);
+          }, 300)
+
       }
 
       constructor() {

@@ -35,11 +35,14 @@
                 <label for="task-input">Write new task</label>
                 <input type="text" name="task-input" id="task-input" value="Mi nueva tarea">
                 <button type="button" name="add" onclick="onButton()">ADD Task</button>
+                <input type="text" name="update-input" id="update-input" value="Actualizar ID">
+                <button type="button" name="add" onclick="onUpdateButton()">UPDATE Task</button>
             </div>
             <script>
             const repo = document.getElementById('task-repo');
             const inputOffset = document.getElementById('offset-input');
             const inputLimit = document.getElementById('limit-input');
+
             function onButton(event) {
               const inputTask = document.getElementById('task-input');
               const newTask = {
@@ -49,6 +52,17 @@
               }
 
               repo.newTask = newTask;
+            }
+
+            function onUpdateButton (event) {
+              const updateInput = document.getElementById('update-input')
+              const updateTask = {
+                id: Number (updateInput.value),
+                title: 'Task Updated',
+                canceled: false,
+                done: false
+              }
+              repo.updateTask = updateTask;
             }
 
             inputOffset.addEventListener('blur', (event) => {
@@ -68,6 +82,10 @@
               } else {
                 repo.getPage();
               }
+            })
+            repo.addEventListener('updated-task', (event) => {
+              repo.getPage(repo.offset, repo.limit)
+              console.log('actualizado')
             })
           </script>
         </template>
