@@ -22,7 +22,19 @@
       <h3>Basic adrian2-task-repository demo</h3>
       <demo-snippet>
         <template>
-          <adrian2-task-repository></adrian2-task-repository>
+          <adrian2-task-repository
+          id="task-repo"
+          offset="0"
+          limit="5"
+          ></adrian2-task-repository>
+          <script>
+              const repo = document.getElementById('task-repo');
+              repo.addEventListener('page-event', (event) => {
+                console.log(event.detail);
+              });
+  
+              setTimeout(() => {repo.getPage()}, 1000);
+            </script>
         </template>
       </demo-snippet>
     </div>
