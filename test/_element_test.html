@@ -4,36 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>adrian2-task-repository test</title>
+    <title>fer-task-repository test</title>
 
     <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../adrian2-task-repository.html">
+    <link rel="import" href="../fer-task-repository.html">
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <adrian2-task-repository></adrian2-task-repository>
+        <fer-task-repository></fer-task-repository>
       </template>
     </test-fixture>
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <adrian2-task-repository prop1="new-prop1"></adrian2-task-repository>
+        <fer-task-repository prop1="new-prop1"></fer-task-repository>
       </template>
     </test-fixture>
 
     <script>
-      suite('adrian2-task-repository', () => {
+      suite('fer-task-repository', () => {
 
         test('instantiating the element with default properties works', () => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'adrian2-task-repository');
+          assert.equal(element.prop1, 'fer-task-repository');
           const elementShadowRoot = element.shadowRoot;
           const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello adrian2-task-repository!');
+          assert.equal(elementHeader.innerHTML, 'Hello fer-task-repository!');
         });
 
         test('setting a property on the element works', () => {

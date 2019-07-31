@@ -1,6 +1,6 @@
 {
-  "name": "adrian2-task-repository",
-  "main": "adrian2-task-repository.html",
+  "name": "fer-task-repository",
+  "main": "fer-task-repository.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0"
   },

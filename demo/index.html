@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>adrian2-task-repository demo</title>
+    <title fer-task-repository demo></title>
 
     <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../adrian2-task-repository.html">
+    <link rel="import" href="../fer-task-repository.html">
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -19,22 +19,36 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic adrian2-task-repository demo</h3>
+      <h3>Basic fer-task-repository demo</h3>
       <demo-snippet>
         <template>
-          <adrian2-task-repository
+           <fer-task-repository
           id="task-repo"
           offset="0"
-          limit="5"
-          ></adrian2-task-repository>
-          <script>
-              const repo = document.getElementById('task-repo');
-              repo.addEventListener('page-event', (event) => {
-                console.log(event.detail);
-              });
-  
-              setTimeout(() => {repo.getPage()}, 1000);
-            </script>
+          limit="5">
+           </fer-task-repository>
+            <div class="page-form">
+                <label for="offset-input">Offset</label><br/>
+                <input type="text" name="offset-input" id="offset-input" value="0"><br/>
+                <label for="limit-input">Limit</label>
+                <input type="text" name="limit-input" id="limit-input" value="5">
+            </div>
+            <script>
+            const repo = document.getElementById('task-repo');
+            const inputOffset = document.getElementById('offset-input');
+            const inputLimit = document.getElementById('limit-input');
+            inputOffset.addEventListener('blur', (event) => {
+              const value = event.target.value;
+              repo.offset = Number(value);
+            });
+            inputLimit.addEventListener('blur', (event) => {
+              const value = event.target.value;
+              repo.limit = Number(value);
+            });
+            repo.addEventListener('page-event', (event) => {
+              console.log(event.detail);
+            });
+          </script>
         </template>
       </demo-snippet>
     </div>

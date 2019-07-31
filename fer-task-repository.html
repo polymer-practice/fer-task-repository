@@ -1,11 +1,11 @@
 <link rel="import" href="../polymer/polymer-element.html">
 
-<dom-module id="adrian2-task-repository">
+<dom-module id="fer-task-repository">
   <template>
   </template>
   <script>
-    class Adrian2TaskRepository extends Polymer.Element {
-      static get is() { return 'adrian2-task-repository'; }
+    class FerTaskRepository extends Polymer.Element {
+      static get is() { return 'fer-task-repository'; }
       static get properties() {
         return {
           offset: {
@@ -15,8 +15,12 @@
           limit: {
             type: Number,
             value: 5
-          } 
+          }
         };
+      }
+
+      static get observers() {
+        return ['getPage(offset, limit)']
       }
 
       constructor() {
@@ -167,13 +171,12 @@
             detail: details
           }
         );
-        
         setTimeout(() => {
           this.dispatchEvent(customEvent);
         }, 300)
       }
     }
 
-    window.customElements.define(Adrian2TaskRepository.is, Adrian2TaskRepository);
+    window.customElements.define(FerTaskRepository.is, FerTaskRepository);
   </script>
 </dom-module>
