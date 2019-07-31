@@ -33,13 +33,24 @@
                 <label for="limit-input">Limit</label>
                 <input type="text" name="limit-input" id="limit-input" value="5">
                 <label for="task-input">Write new task</label>
-                <input type="text" name="task-input" id="task-input" value="5">
-                <button type="button" name="add" on-click="onButton">ADD Task</button>
+                <input type="text" name="task-input" id="task-input" value="Mi nueva tarea">
+                <button type="button" name="add" onclick="onButton()">ADD Task</button>
             </div>
             <script>
             const repo = document.getElementById('task-repo');
             const inputOffset = document.getElementById('offset-input');
             const inputLimit = document.getElementById('limit-input');
+            function onButton(event) {
+              const inputTask = document.getElementById('task-input');
+              const newTask = {
+                title: inputTask.value,
+                canceled: false,
+                done: false
+              }
+
+              repo.newTask = newTask;
+            }
+
             inputOffset.addEventListener('blur', (event) => {
               const value = event.target.value;
               repo.offset = Number(value);
@@ -51,6 +62,13 @@
             repo.addEventListener('page-event', (event) => {
               console.log(event.detail);
             });
+            repo.addEventListener('task-created', (event) => {
+              if (repo.offset !== 0) {
+                repo.offset = 0;
+              } else {
+                repo.getPage();
+              }
+            })
           </script>
         </template>
       </demo-snippet>
